@@ -119,8 +119,11 @@ public class ServerSearch extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String dayFile = "D:\\Experiment\\point_db\\beijing\\day.txt";
-        BufferedReader bf = new BufferedReader(new FileReader(dayFile));
+//        String dayFile = "D:\\Experiment\\point_db\\beijing\\day.txt";
+//        BufferedReader bf = new BufferedReader(new FileReader(dayFile));
+
+        InputStream in = ServerSearch.class.getClassLoader().getResourceAsStream("day.txt");
+        BufferedReader bf = new BufferedReader(new InputStreamReader(in, "UTF-8"));
         String line = null;
         List<String> res = new ArrayList<>();
         while (null != (line = bf.readLine())){
