@@ -36,10 +36,15 @@ public class ServerRate extends HttpServlet {
             /* 星号表示所有的异域请求都可以接受， */
             response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 
-            String rateFile = "D:\\Experiment\\point_db\\beijing\\def_rate.txt";
-            String xyFile = "D:\\Experiment\\point_db\\beijing\\lonlat.txt";
-            BufferedReader bf1 = new BufferedReader(new FileReader(rateFile));
-            BufferedReader bf2 = new BufferedReader(new FileReader(xyFile));
+//            String rateFile = "D:\\Experiment\\point_db\\beijing\\def_rate.txt";
+//            String xyFile = "D:\\Experiment\\point_db\\beijing\\lonlat.txt";
+//            BufferedReader bf1 = new BufferedReader(new FileReader(rateFile));
+//            BufferedReader bf2 = new BufferedReader(new FileReader(xyFile));
+
+            InputStream in1 = ServerSearch.class.getClassLoader().getResourceAsStream("def_rate.txt");
+            BufferedReader bf1 = new BufferedReader(new InputStreamReader(in1, "UTF-8"));
+            InputStream in2 = ServerSearch.class.getClassLoader().getResourceAsStream("lonlat.txt");
+            BufferedReader bf2 = new BufferedReader(new InputStreamReader(in2, "UTF-8"));
             String line1 = null;
             String line2 = null;
             List<String> res = new ArrayList<>();

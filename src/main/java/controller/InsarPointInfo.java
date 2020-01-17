@@ -1,5 +1,6 @@
 package controller;
 
+import app.ServerSearch;
 import org.geotools.data.Query;
 import org.geotools.factory.CommonFactoryFinder;
 import org.geotools.feature.simple.SimpleFeatureBuilder;
@@ -53,13 +54,15 @@ public class InsarPointInfo implements TutorialData {
     private int allLineID = 1;
 
     public InsarPointInfo() throws FileNotFoundException {
-        brRate = new BufferedReader(new FileReader(path_rate));
-        brTs = new BufferedReader(new FileReader(path_ts));
-        brLonlat = new BufferedReader(new FileReader(path_lonlat));
+//        brRate = new BufferedReader(new FileReader(path_rate));
+//        brTs = new BufferedReader(new FileReader(path_ts));
+//        brLonlat = new BufferedReader(new FileReader(path_lonlat));
 
         try {
             // Read days
-            InputStream is = new FileInputStream(path_day);
+            InputStream is = ServerSearch.class.getClassLoader().getResourceAsStream("day.txt");
+
+//            InputStream is = new FileInputStream(path_day);
             int iAvail = is.available();
             byte[] bytes = new byte[iAvail];
             is.read(bytes);
